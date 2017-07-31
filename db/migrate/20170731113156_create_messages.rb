@@ -1,4 +1,4 @@
-class CreateMesssages < ActiveRecord::Migration
+class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
       t.integer :from_user_id, null: false

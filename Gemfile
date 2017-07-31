@@ -42,6 +42,12 @@ gem "slim-rails"
 
 gem "activerecord-postgis-adapter"
 
+gem "devise-bootstrap-views"
+
+gem "bootstrap-sass", "~> 3.3.1"
+
+gem "autoprefixer-rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -1,1 +1,8 @@
-h1 Hello Heroku!
+h1 Sample Rent App
+
+- if user_signed_in?
+  div
+    = link_to('Sign out', destroy_user_session_path, method: :delete)
+- else
+  div
+    = link_to('Sign in', new_user_session_path)
