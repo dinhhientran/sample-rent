@@ -1,0 +1,33 @@
+p#notice = notice
+
+p
+  strong Marquee:
+  = @car.marquee
+p
+  strong Model:
+  = @car.model
+p
+  strong Seat:
+  = @car.seat
+p
+  strong Color:
+  = @car.color
+p
+  strong Price:
+  = @car.price
+p
+  strong Public year:
+  = @car.public_year
+p
+  strong Description:
+  = @car.description
+p
+  strong User:
+  = @car.user_id
+p
+  strong Activate:
+  = @car.activate
+
+= link_to 'Edit', edit_car_path(@car)
+'  |
+= link_to 'Back', cars_path

@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731113156) do
+ActiveRecord::Schema.define(version: 20170801164835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
-  create_table "houses", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.string   "title"
-    t.string   "city"
-    t.text     "address"
-    t.decimal  "cost"
+  create_table "cars", force: :cascade do |t|
+    t.string   "marquee"
+    t.string   "model"
+    t.integer  "seat"
+    t.string   "color"
+    t.integer  "price"
+    t.integer  "public_year"
     t.text     "description"
+    t.integer  "user_id"
+    t.boolean  "activate"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "houses", ["user_id"], name: "index_houses_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "from_user_id", null: false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20170731113156) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "houses", "users"
   add_foreign_key "messages", "users", column: "from_user_id"
   add_foreign_key "messages", "users", column: "to_user_id"
 end

@@ -1,0 +1,37 @@
+h1 Listing cars
+
+table
+  thead
+    tr
+      th Marquee
+      th Model
+      th Seat
+      th Color
+      th Price
+      th Public year
+      th Description
+      th User
+      th Activate
+      th
+      th
+      th
+
+  tbody
+    - @cars.each do |car|
+      tr
+        td = car.marquee
+        td = car.model
+        td = car.seat
+        td = car.color
+        td = car.price
+        td = car.public_year
+        td = car.description
+        td = car.user_id
+        td = car.activate
+        td = link_to 'Show', car
+        td = link_to 'Edit', edit_car_path(car)
+        td = link_to 'Destroy', car, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Car', new_car_path

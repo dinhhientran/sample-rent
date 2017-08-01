@@ -1,0 +1,36 @@
+= form_for @car do |f|
+  - if @car.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@car.errors.count, "error")} prohibited this car from being saved:"
+      ul
+        - @car.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :marquee
+    = f.text_field :marquee
+  .field
+    = f.label :model
+    = f.text_field :model
+  .field
+    = f.label :seat
+    = f.number_field :seat
+  .field
+    = f.label :color
+    = f.text_field :color
+  .field
+    = f.label :price
+    = f.number_field :price
+  .field
+    = f.label :public_year
+    = f.number_field :public_year
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :activate
+    = f.check_box :activate
+  .actions = f.submit
