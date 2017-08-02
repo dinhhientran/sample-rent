@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  marquee: MyString
+  brand: MyString
   model: MyString
   seat: 1
   color: MyString
@@ -12,7 +12,7 @@ one:
   activate: false
 
 two:
-  marquee: MyString
+  brand: MyString
   model: MyString
   seat: 1
   color: MyString

@@ -15,10 +15,16 @@ class CarsController < ApplicationController
   # GET /cars/new
   def new
     @car = Car.new
+    @public_year = ["2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007"]
+    @seat = [2,4,7,9,16,40]
+    @colors = ["green","blue","white","black","red","other"]
   end
 
   # GET /cars/1/edit
   def edit
+    @public_year = ["2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007"]
+    @seat = [2,4,7,9,16,40]
+    @colors = ["green","blue","white","black","red","other"]
   end
 
   # POST /cars
@@ -69,6 +75,6 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:marquee, :model, :seat, :color, :price, :public_year, :description, :user_id, :activate)
+      params.require(:car).permit(:brand, :model, :seat, :color, :price, :public_year, :description, :user_id, :activate)
     end
 end

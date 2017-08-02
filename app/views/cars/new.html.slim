@@ -1,5 +1,8 @@
-h1 New car
-
-== render 'form'
+.panel.panel-default.devise-bs
+  .panel-heading
+    h1
+      = t('.new_car', default: 'New Car')
+  .panel-body
+		== render 'form'
 
 = link_to 'Back', cars_path

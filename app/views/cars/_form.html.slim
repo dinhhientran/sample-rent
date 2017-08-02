@@ -6,31 +6,41 @@
         - @car.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :marquee
-    = f.text_field :marquee
-  .field
-    = f.label :model
-    = f.text_field :model
-  .field
-    = f.label :seat
-    = f.number_field :seat
-  .field
-    = f.label :color
-    = f.text_field :color
-  .field
-    = f.label :price
-    = f.number_field :price
-  .field
-    = f.label :public_year
-    = f.number_field :public_year
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :activate
-    = f.check_box :activate
-  .actions = f.submit
+  .car-form
+    .left-form
+      = f.label :brand
+    .right-form
+      = f.text_field :brand
+  .car-form
+    .left-form
+      = f.label :model
+    .right-form
+      = f.text_field :model
+  .car-form
+    .left-form
+      = f.label :seat
+    .right-form
+      = f.select(:seat, @seat.map { |value| [ value, value ] })
+  .car-form
+    .left-form
+      = f.label :color
+    .right-form
+      = f.text_field :color
+  .car-form
+    .left-form
+      = f.label :price
+    .right-form
+      = f.number_field :price
+  .car-form
+    .left-form
+      = f.label :public_year
+    .right-form
+      = f.select(:public_year, @public_year.map { |value| [ value, value ] })
+  .car-form
+    .left-form
+      = f.label :description
+    .right-form
+      = f.text_area :description
+  .car-form
+    .left-form
+      .actions = f.submit
