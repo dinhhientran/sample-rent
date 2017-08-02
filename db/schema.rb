@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170802145052) do
     t.integer  "started_user_id"
     t.integer  "to_user_id"
     t.integer  "latest_message_id"
+    t.string   "subject"
     t.boolean  "is_deleted"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
