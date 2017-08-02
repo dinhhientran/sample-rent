@@ -1,8 +1,59 @@
-h1 Sample Rent App
-
-- if user_signed_in?
-  div
-    = link_to('Sign out', destroy_user_session_path, method: :delete)
-- else
-  div
-    = link_to('Sign in', new_user_session_path)
+/! Jumbotron Header
+header#map.jumbotron.hero-spacer
+  javascript:
+    function initMap() {
+      var uluru = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+    }
+  = google_maps_javascript_include_tag
+hr
+/! Title
+.row
+  .col-lg-12
+    h3 Latest Cars
+/! /.row
+/! Page Features
+.row.text-center
+  .col-md-3.col-sm-6.hero-feature
+    .thumbnail
+      img alt="" src="http://placehold.it/800x500" /
+      .caption
+        h3 Car 1
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        p
+          a.btn.btn-primary href="#"  Rent Now!
+          a.btn.btn-default href="#"  More Info
+  .col-md-3.col-sm-6.hero-feature
+    .thumbnail
+      img alt="" src="http://placehold.it/800x500" /
+      .caption
+        h3 Car 2
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        p
+          a.btn.btn-primary href="#"  Rent Now!
+          a.btn.btn-default href="#"  More Info
+  .col-md-3.col-sm-6.hero-feature
+    .thumbnail
+      img alt="" src="http://placehold.it/800x500" /
+      .caption
+        h3 Car 3
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        p
+          a.btn.btn-primary href="#"  Rent Now!
+          a.btn.btn-default href="#"  More Info
+  .col-md-3.col-sm-6.hero-feature
+    .thumbnail
+      img alt="" src="http://placehold.it/800x500" /
+      .caption
+        h3 Car 4
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        p
+          a.btn.btn-primary href="#"  Rent Now!
+          a.btn.btn-default href="#"  More Info
