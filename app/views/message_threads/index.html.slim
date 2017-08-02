@@ -1,0 +1,24 @@
+.row
+  section.content
+    h1  = 'Inbox (' + @total_unread_messages.to_s + ')'
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .table-container
+              - if !@message_threads.empty?
+                table.table.table-filter
+                  tbody
+                    - @message_threads.each do |thread|
+                      tr
+                        td
+                          .media
+                            a.pull-left href="#"
+                              img.media-photo src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" /
+                            .media-body
+                              span.media-meta.pull-right = l thread.created_at, format: :short
+                              h4.title = thread.subject
+                                span.pull-right.pagado = thread.started_user.equal_user?(current_user) ? current_user.full_name : thread.to_user.full_name
+                              p.summary = thread.latest_message.body.split[0...10].join(' ') << "..."
+              - if @message_threads.empty?
+                p No messages

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :cars
 
-  get 'messages/index'
-  get 'messages/new'
+  get 'message_threads/index'
+  get 'messages/compose'
   get 'messages/send'
 end

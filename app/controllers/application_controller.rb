@@ -3,9 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :count_unread_messages
+  before_action :count_unread_messages
 
   def count_unread_messages
-    @total_unread_messages = Message.where(:is_read => false).count.to_s
+    if user_signed_in?
+      @total_unread_messages = Message.count_unread_messages(current_user.id)
+    end
   end
 end
