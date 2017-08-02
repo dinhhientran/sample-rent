@@ -28,6 +28,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :houses
   has_many :messages
+
+  def equal_user?(user)
+    return !user.nil? && self.id == user.id;
+  end
+
+  def full_name
+    return self.first_name + " " + self.last_name
+  end
 end

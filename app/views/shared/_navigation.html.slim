@@ -16,7 +16,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
       ul.nav.navbar-nav.pull-right
         - if user_signed_in?
           li
-            = link_to('Inbox (' + @total_unread_messages + ')', messages_index_path)
+            = link_to('Inbox (' + @total_unread_messages.to_s + ')', message_threads_index_path)
           li
             = link_to('Sign out', destroy_user_session_path, method: :delete)
         - else

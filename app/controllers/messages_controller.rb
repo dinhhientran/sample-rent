@@ -1,10 +1,10 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
+  def compose
+    @to_user = User.find(params[:to_user])
 
-  def new
+    raise ActionController::RoutingError.new('Not Found') if @to_user.nil?
   end
 
   def send

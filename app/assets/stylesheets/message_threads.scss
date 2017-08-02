@@ -1,0 +1,74 @@
+// Place all the styles related to the MessageThreads controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel {
+  border: 1px solid #ddd;
+  background-color: #fcfcfc;
+  .btn-group {
+    margin: 15px 0 30px;
+    .btn {
+      transition: background-color .3s ease;
+    }
+  }
+}
+
+.table-filter {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  tbody tr {
+    &:hover {
+      cursor: pointer;
+      background-color: #eee;
+    }
+    td {
+      padding: 10px;
+      vertical-align: middle;
+      border-top-color: #eee;
+    }
+    &.selected td {
+      background-color: #eee;
+    }
+  }
+  tr td {
+    &:first-child {
+      width: 38px;
+    }
+    &:nth-child(2) {
+      width: 35px;
+    }
+  }
+}
+
+.table-filter {
+  .media-photo {
+    width: 35px;
+  }
+  .media-body {
+    display: block;
+    width: 90%;
+  }
+  .media-meta {
+    font-size: 11px;
+    color: #999;
+  }
+  .media {
+    .title {
+      color: #2BBCDE;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: normal;
+      margin: 0;
+      span {
+        font-size: .8em;
+        margin-right: 20px;
+        &.pagado {
+          color: #5cb85c;
+        }
+      }
+    }
+    .summary {
+      font-size: 14px;
+    }
+  }
+}
