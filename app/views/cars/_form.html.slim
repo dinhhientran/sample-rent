@@ -1,4 +1,4 @@
-= form_for @car do |f|
+= form_for @car, :html => {:multipart => true} do |f|
   - if @car.errors.any?
     #error_explanation
       h2 = "#{pluralize(@car.errors.count, "error")} prohibited this car from being saved:"
@@ -36,6 +36,11 @@
       = f.label :public_year
     .right-form
       = f.select(:public_year, @public_year.map { |value| [ value, value ] })
+  .car-form
+    .left-form
+      = f.label :remote_image_url, "or image URL"
+    .right-form
+      = f.file_field :image
   .car-form
     .left-form
       = f.label :description

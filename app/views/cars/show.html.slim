@@ -1,5 +1,7 @@
 p#notice = notice
 
+= image_tag @car.image_url(:thumb) if @car.image?
+
 p
   strong Marquee:
   = @car.brand
@@ -24,9 +26,7 @@ p
 p
   strong User:
   = @car.user_id
-p
-  strong Activate:
-  = @car.activate
+
 
 = link_to 'Edit', edit_car_path(@car)
 '  |
