@@ -4,7 +4,11 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    if params[:search]
+      @cars = Car.search(params[:search]).order("created_at DESC")
+    else
+      @cars = Car.get_cars()
+    end
   end
 
   # GET /cars/1

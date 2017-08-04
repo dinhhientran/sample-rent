@@ -1,37 +1,43 @@
 h1 Listing cars
 
-table
-  thead
-    tr
-      th Marquee
-      th Model
-      th Seat
-      th Color
-      th Price
-      th Public year
-      th Description
-      th User
-      th Activate
-      th
-      th
-      th
+= form_tag(cars_path, :method => "get", id: "search-form") do
+  = text_field_tag :search, params[:search], placeholder: "Search Cars"
+  = submit_tag "Search"
 
-  tbody
-    - @cars.each do |car|
+- if @cars.present?
+
+  table
+    thead
       tr
-        td = car.brand
-        td = car.model
-        td = car.seat
-        td = car.color
-        td = car.price
-        td = car.public_year
-        td = car.description
-        td = car.user_id
-        td = car.activate
-        td = link_to 'Show', car
-        td = link_to 'Edit', edit_car_path(car)
-        td = link_to 'Destroy', car, data: { confirm: 'Are you sure?' }, method: :delete
+        th
+        th Brand Model
+        th Seat
+        th Color
+        th Public year
+        th Price (usd/day)
+        th Contact
+        - if user_signed_in?
+          th
+          th
+
+    tbody
+      - @cars.each do |car|
+        tr
+          td 
+            - if car.image?
+              = link_to car do
+                = image_tag car.image_url(:thumb)
+          td = link_to "#{car.brand} #{car.model}", car
+          td = car.seat
+          td = car.color
+          td = car.public_year
+          td = car.price
+          td = car.user.email
+          - if user_signed_in?
+            td = link_to 'Edit', edit_car_path(car)
+            td = link_to 'Destroy', car, data: { confirm: 'Are you sure?' }, method: :delete
+- else
+  p There are no car containing the search term(s)
 
 br
-
 = link_to 'New Car', new_car_path
