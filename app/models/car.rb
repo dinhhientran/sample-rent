@@ -24,6 +24,9 @@ class Car < ActiveRecord::Base
 	validates :brand, presence: true, length: { minimum: 3 }
 	validates :model, presence: true, length: { minimum: 2 }
 
+	scope :red, -> { where(color: 'red') }
+	scope :last_cars, -> { limit(4).order('created_at DESC') }
+
 	########################################
 	# Function: get_cars
 	# only get activated cars
@@ -40,4 +43,5 @@ class Car < ActiveRecord::Base
 	def self.search(search)
 	  where("brand LIKE ? OR model LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
 	end
+
 end

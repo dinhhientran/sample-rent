@@ -21,39 +21,14 @@ hr
 /! /.row
 /! Page Features
 .row.text-center
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      img alt="" src="http://placehold.it/800x500" /
-      .caption
-        h3 Car 1
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        p
-          a.btn.btn-primary href="#"  Rent Now!
-          a.btn.btn-default href="#"  More Info
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      img alt="" src="http://placehold.it/800x500" /
-      .caption
-        h3 Car 2
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        p
-          a.btn.btn-primary href="#"  Rent Now!
-          a.btn.btn-default href="#"  More Info
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      img alt="" src="http://placehold.it/800x500" /
-      .caption
-        h3 Car 3
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        p
-          a.btn.btn-primary href="#"  Rent Now!
-          a.btn.btn-default href="#"  More Info
-  .col-md-3.col-sm-6.hero-feature
-    .thumbnail
-      img alt="" src="http://placehold.it/800x500" /
-      .caption
-        h3 Car 4
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        p
-          a.btn.btn-primary href="#"  Rent Now!
-          a.btn.btn-default href="#"  More Info
+  - @cars.each do |car|
+    .col-md-3.col-sm-6.hero-feature
+      .thumbnail
+        = link_to car do
+          = image_tag car.image_url(:thumb)
+        .caption
+          h3 ="#{car.brand} #{car.model}"
+          p car.description
+          p
+            a.btn.btn-primary href="#"  Rent Now!
+            = link_to "More Info", car

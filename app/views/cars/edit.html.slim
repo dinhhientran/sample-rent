@@ -1,8 +1,10 @@
-h1 Editing car
-
-== render 'form'
+.panel.panel-default.devise-bs
+  .panel-heading
+    h1
+      = t('.edit_car', default: 'Editing car')
+  .panel-body
+		== render 'form'
 
 = link_to 'Show', @car
 '  |
 = link_to 'Back', cars_path
-

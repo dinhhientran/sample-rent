@@ -8,13 +8,14 @@ class CarsController < ApplicationController
     if params[:search]
       @cars = Car.search(params[:search]).order("created_at DESC")
     else
-      @cars = Car.get_cars()
+      @cars = Car.get_cars
     end
   end
 
   # GET /cars/1
   # GET /cars/1.json
   def show
+
   end
 
   # GET /cars/new
@@ -36,6 +37,7 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(car_params)
+    @car.user_id = current_user.id
 
     respond_to do |format|
       if @car.save

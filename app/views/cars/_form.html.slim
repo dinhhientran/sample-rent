@@ -5,47 +5,29 @@
       ul
         - @car.errors.full_messages.each do |message|
           li = message
-  .car-form
-    .car-line
-      .car-cell
-        = f.label :brand
-      .car-cell
-        = f.text_field :brand
-    .car-line
-      .car-cell
-        = f.label :model
-      .car-cell
-        = f.text_field :model
-    .car-line
-      .car-cell
-        = f.label :seat
-      .car-cell
-        = f.select(:seat, @seat.map { |value| [ value, value ] })
-    .car-line
-      .car-cell
-        = f.label :color
-      .car-cell
-        = f.text_field :color
-    .car-line
-      .car-cell
-        = f.label :price, "Price (USD / Day)"
-      .car-cell
-        = f.number_field :price
-    .car-line
-      .car-cell
-        = f.label :public_year
-      .car-cell
-        = f.select(:public_year, @public_year.map { |value| [ value, value ] })
-    .car-line
-      .car-cell
-        = f.label :remote_image_url, "or image URL"
-      .car-cell
-        = f.file_field :image
-    .car-line
-      .car-cell
-        = f.label :description
-      .car-cell
-        = f.text_area :description
-    .car-line
-      .car-cell
-        .actions = f.submit
+  .form-group
+    = f.label :brand
+    = f.text_field :brand, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :model
+    = f.text_field :model, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :seat
+    = f.select(:seat, @seat.map { |value| [ value, value ] })
+  .form-group
+    = f.label :color
+    = f.text_field :color, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :price, "Price (USD / Day)"
+    = f.number_field :price, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :public_year
+    = f.select(:public_year, @public_year.map { |value| [ value, value ] })
+  .form-group
+    = f.label :remote_image_url, "or image URL"
+    = f.file_field :image, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :description
+    = f.text_area :description, autofocus: true, class: 'form-control'
+  .form-group
+    .actions = f.submit t('.submit', default: 'Submit'), class: 'btn btn-primary'
