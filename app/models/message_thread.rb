@@ -19,5 +19,9 @@ class MessageThread < ActiveRecord::Base
 
   has_many :messages, -> {order 'created_at desc'}
 
+  validates :subject, :presence => true
+  validates :to_user_id, :presence => true
+  validates :started_user_id, :presence => true
+
   scope :of_user, ->(user) { where("started_user_id = ? OR to_user_id = ?", user.id, user.id).order("created_at desc") }
 end

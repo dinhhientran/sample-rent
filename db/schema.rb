@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 20170803160015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "cars", force: :cascade do |t|
-    t.string   "brand"
+    t.string   "marquee"
     t.string   "model"
     t.integer  "seat"
     t.string   "color"
@@ -46,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170803160015) do
   add_index "message_threads", ["to_user_id"], name: "index_message_threads_on_to_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "from_user_id",      null: false
-    t.integer  "to_user_id",        null: false
+    t.integer  "sender_id",         null: false
+    t.integer  "receiver_id",       null: false
     t.string   "subject"
     t.text     "body"
     t.boolean  "is_read"
@@ -56,8 +57,8 @@ ActiveRecord::Schema.define(version: 20170803160015) do
     t.integer  "message_thread_id"
   end
 
-  add_index "messages", ["from_user_id"], name: "index_messages_on_from_user_id", using: :btree
-  add_index "messages", ["to_user_id"], name: "index_messages_on_to_user_id", using: :btree
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -85,6 +86,6 @@ ActiveRecord::Schema.define(version: 20170803160015) do
   add_foreign_key "message_threads", "messages", column: "latest_message_id"
   add_foreign_key "message_threads", "users", column: "started_user_id"
   add_foreign_key "message_threads", "users", column: "to_user_id"
-  add_foreign_key "messages", "users", column: "from_user_id"
-  add_foreign_key "messages", "users", column: "to_user_id"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
 end

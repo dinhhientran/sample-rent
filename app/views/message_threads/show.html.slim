@@ -1,0 +1,14 @@
+.row.current-chat-area
+  .col-md-12
+    h1 = @message_thread.subject
+    ul.media-list
+      - @message_thread.messages.each do |message|
+        li.media
+          .media-body
+            .media
+              a.pull-left href="#"
+                img.media-object.img-circle src="https://app.teamsupport.com/dc/1078/UserAvatar/1839999/48/1470773165634" /
+              .media-body = message.body
+              br/
+              small.text-muted = "#{message.sender.full_name} | #{l message.created_at, format: :short}"
+              hr/

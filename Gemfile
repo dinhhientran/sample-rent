@@ -48,7 +48,10 @@ gem "bootstrap-sass", "~> 3.3.1"
 
 gem "autoprefixer-rails"
 
+gem "bootstrap_form"
+
 gem "rmagick"
+
 gem "carrierwave"
 
 group :development, :test do

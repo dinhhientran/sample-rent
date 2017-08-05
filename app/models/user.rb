@@ -30,11 +30,17 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+  validates :city, :presence => true
+  validates :address, :presence => true
+  validates :phone_number, :presence => true, length: { is: 10, wrong_length: "must be %{count} digits" }
+
   def equal_user?(user)
-    return !user.nil? && self.id == user.id;
+    return !user.nil? && id == user.id;
   end
 
   def full_name
-    return self.first_name + " " + self.last_name
+    return first_name + " " + last_name
   end
 end

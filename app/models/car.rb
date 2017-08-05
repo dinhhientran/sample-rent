@@ -14,7 +14,7 @@
 #  activate    :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#
+#˜
 
 class Car < ActiveRecord::Base
 	belongs_to :user

@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
       @total_unread_messages = Message.count_unread_messages(current_user.id)
     end
   end
+
+  protected
+    def render_not_found
+      render :file => "#{Rails.root}/public/404.html", :status => 404
+    end
 end

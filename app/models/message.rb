@@ -15,8 +15,8 @@
 
 class Message < ActiveRecord::Base
   belongs_to :message_thread
-  has_one :sender, :class_name => "User", :foreign_key => "sender_id"
-  has_one :receiver, :class_name => "User", :foreign_key => "receiver_id"
+  belongs_to :sender, :class_name => "User", :foreign_key => "sender_id"
+  belongs_to :receiver, :class_name => "User", :foreign_key => "receiver_id"
 
   def self.count_unread_messages(user_id)
     Message.joins(:message_thread)

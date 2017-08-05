@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    :registrations => 'users/registrations'
+  }
 
   root 'home#index'
 
   resources :cars
 
-  get 'message_threads/index'
-  get 'messages/compose'
-  get 'messages/send'
+  resources :message_threads, only: [:index, :new, :show, :create]
+
 end
