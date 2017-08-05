@@ -1,33 +1,32 @@
 p#notice = notice
 
-= image_tag @car.image_url(:thumb) if @car.image?
+h3 ="#{@car.brand} #{@car.model}"
 
-p
-  strong Marquee:
-  = @car.brand
-p
-  strong Model:
-  = @car.model
-p
-  strong Seat:
-  = @car.seat
-p
-  strong Color:
-  = @car.color
-p
-  strong Price:
-  = @car.price
-p
-  strong Public year:
-  = @car.public_year
-p
+.car-container
+  .left-side = image_tag @car.image_url(:thumb) if @car.image?
+
+  .right-side
+    p
+      strong Seat:
+      = @car.seat
+    p
+      strong Color:
+      = @car.color
+    p
+      strong Price:
+      = @car.price
+    p
+      strong Public year:
+      = @car.public_year
+    p
+      strong contact:
+      = @car.user.email
+
+.car-description
   strong Description:
   = @car.description
-p
-  strong User:
-  = @car.user_id
 
-
-= link_to 'Edit', edit_car_path(@car)
-'  |
-= link_to 'Back', cars_path
+- if user_signed_in?
+  = link_to 'Edit', edit_car_path(@car)
+  '  |
+  = link_to 'Back', cars_path
