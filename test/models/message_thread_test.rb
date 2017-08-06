@@ -6,10 +6,10 @@
 #  started_user_id   :integer
 #  to_user_id        :integer
 #  latest_message_id :integer
+#  subject           :string
 #  is_deleted        :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  subject           :text
 #
 
 require 'test_helper'

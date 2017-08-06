@@ -12,3 +12,12 @@
               br/
               small.text-muted = "#{message.sender.full_name} | #{l message.created_at, format: :short}"
               hr/
+  .col-md-12
+    h1 = 'Reply '
+    = form_for @message do |f|
+      = f.hidden_field :message_thread_id, :value => @message_thread.id
+      .form-group
+        = f.label 'Message'
+        = f.text_area :body, rows: 4, cols: 100, class: 'form-control'
+      .form-group
+        = f.submit 'Send'

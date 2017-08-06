@@ -3,7 +3,7 @@
 # Table name: cars
 #
 #  id          :integer          not null, primary key
-#  marquee     :string
+#  brand       :string
 #  model       :string
 #  seat        :integer
 #  color       :string
@@ -14,6 +14,7 @@
 #  activate    :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  image       :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

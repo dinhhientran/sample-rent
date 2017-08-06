@@ -16,7 +16,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
       ul.nav.navbar-nav.pull-right
         - if user_signed_in?
           li
-            = link_to 'My account', edit_user_registration_path
+            = link_to 'My account (' << current_user.email << ')', edit_user_registration_path
           li
             = link_to 'Inbox (' + @total_unread_messages.to_s + ')', message_threads_path
           li

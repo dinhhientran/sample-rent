@@ -36,11 +36,25 @@ class User < ActiveRecord::Base
   validates :address, :presence => true
   validates :phone_number, :presence => true, length: { is: 10, wrong_length: "must be %{count} digits" }
 
+  attr_reader :latitude, :longitude
+
   def equal_user?(user)
     return !user.nil? && id == user.id;
   end
 
   def full_name
     return first_name + " " + last_name
+  end
+
+  def full_address
+    return address + ", " + city
+  end
+
+  def latitude
+    coordinates.lat if coordinates
+  end
+
+  def longitude
+    coordinates.lon if coordinates
   end
 end

@@ -5,12 +5,22 @@ class MessageThreadsController < ApplicationController
     @message_threads = MessageThread.of_user(current_user)
   end
 
+  # Find all messages related to given message thread
+  # Mark messages of given thread related to current user as read
   def show
     @message_thread = MessageThread.find(params[:id])
+    @message_thread.messages.each do |message|
+      if message.sender.equal_user?(current_user)
+        message.update(is_sender_read: true)
+      else
+        message.update(is_receiver_read: true)
+      end
+    end
+    @message = Message.new
   end
 
-  # in  users want to send message to themselves or to_user does not exist,
-  # redirect them to 'not found' page
+  # In case users send message to themselves or to_user does not exist,
+  # redirect users to 'not found' page
   def new
     if User.exists?(params[:to_user]) && current_user.id != params[:to_user]
       @to_user = User.find(params[:to_user])
@@ -20,6 +30,7 @@ class MessageThreadsController < ApplicationController
     end
   end
 
+  # Create message thread & its first message then redirect to that message thread page
   def create
     @message_thread = MessageThread.new(message_thread_param)
     @message_thread.started_user_id = current_user.id
@@ -28,6 +39,7 @@ class MessageThreadsController < ApplicationController
       message = Message.new
       message.message_thread = @message_thread
       message.sender = current_user
+      message.is_sender_read = true
       message.receiver = @message_thread.to_user
       message.body = params[:message]
 

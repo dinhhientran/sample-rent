@@ -14,7 +14,8 @@
 #  activate    :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#˜
+#  image       :string
+#
 
 class Car < ActiveRecord::Base
 	belongs_to :user
@@ -27,19 +28,11 @@ class Car < ActiveRecord::Base
 	scope :red, -> { where(color: 'red') }
 	scope :last_cars, -> { limit(4).order('created_at DESC') }
 
-	########################################
-	# Function: get_cars
-	# only get activated cars
-	########################################
 	def self.get_cars()
 		where("activate == true")
 		order('created_at DESC')
 	end
 
-	########################################
-	# Function: search
-	# Return only matched cars
-	########################################
 	def self.search(search)
 	  where("brand LIKE ? OR model LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
 	end

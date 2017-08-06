@@ -17,6 +17,10 @@
   background-color: #fff;
   border-bottom: 1px solid #eee;
   tbody tr {
+    background-color: #efefef;
+    &.highlight {
+      background-color: #fff !important;
+    }
     &:hover {
       cursor: pointer;
       background-color: #eee;

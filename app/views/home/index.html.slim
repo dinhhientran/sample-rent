@@ -1,16 +1,28 @@
 /! Jumbotron Header
 header#map.jumbotron.hero-spacer
   javascript:
+    function addMarker(data, map) {
+      // Add the marker at the clicked location, and add the next-available label
+      // from the array of alphabetical characters.
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(41.850033, -87.6500523),
+        title: data.title,
+        map: map
+      });
+    }
     function initMap() {
-      var uluru = {lat: -25.363, lng: 131.044};
+      var chicago = {lat: 41.850033, lng: -87.6500523};
       var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
+        zoom: 5,
+        center: chicago
+      });
+
+      var markers = #{raw @markers.to_json};
+
+      for (var i in markers) {
+        addMarker(markers[i], map);
+        console.log(markers[i]);
+      }
     }
   = google_maps_javascript_include_tag
 hr

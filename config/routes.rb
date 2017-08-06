@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :message_threads, only: [:index, :new, :show, :create]
 
+  resources :messages, only: [:create]
+
 end
