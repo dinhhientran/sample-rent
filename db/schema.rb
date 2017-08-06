@@ -15,10 +15,9 @@ ActiveRecord::Schema.define(version: 20170803160015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "cars", force: :cascade do |t|
-    t.string   "marquee"
+    t.string   "brand"
     t.string   "model"
     t.integer  "seat"
     t.string   "color"
