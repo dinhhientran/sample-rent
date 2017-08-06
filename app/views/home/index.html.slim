@@ -9,7 +9,16 @@ header#map.jumbotron
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(data.lat, data.lng),
         title: data.title,
-        map: map
+        label: data.title,
+        map: map,
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+          content: '<div><h1>Owner: ' + data.title + '</h1></div>'
+      });
+
+      marker.addListener('click', function () {
+          infowindow.open(map, marker);
       });
     }
     function initMap() {
@@ -23,7 +32,6 @@ header#map.jumbotron
 
       for (var i in markers) {
         addMarker(markers[i], map);
-        console.log(markers[i]);
       }
     }
   = google_maps_javascript_include_tag
@@ -45,3 +53,5 @@ hr
               = link_to "View detail", car, class: 'btn btn-primary'
             - else
               = link_to "Send message to rent", new_message_thread_path(:to_user => car.user_id, :car_id => car.id), class: 'btn btn-primary'
+  - if @cars.empty?
+    p No cars

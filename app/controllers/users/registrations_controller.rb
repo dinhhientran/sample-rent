@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       geo_result = Geocoder.search(user.address + ', ' + user.city)
       if !geo_result.empty?
         mfactory = RGeo::ActiveRecord::SpatialFactoryStore.instance.factory(:geo_type => 'point')
-        user.update(coordinates: mfactory.point(geo_result.first.coordinates[0], geo_result.first.coordinates[1]))
+        user.update(coordinates: mfactory.point(geo_result.first.coordinates[1], geo_result.first.coordinates[0]))
       end
     end
 end
