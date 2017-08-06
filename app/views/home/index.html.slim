@@ -28,7 +28,7 @@ hr
           = image_tag car.image_url(:thumb)
         .caption
           h3 ="#{car.brand} #{car.model}"
-          p car.description
+          p = car.description
           p
-            a.btn.btn-primary href="#"  Rent Now!
+            = link_to "Rent Now!", new_message_thread_path(:to_user => car.user_id)
             = link_to "More Info", car
