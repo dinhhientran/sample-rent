@@ -1,6 +1,6 @@
 .row
   section.content
-    h1  = 'Inbox (' + @total_unread_messages.to_s + ')'
+    h1 = 'Inbox (' + @total_unread_messages.to_s + ')'
     .row
       .col-md-12
         .panel.panel-default
@@ -13,12 +13,12 @@
                       tr class=("message-thread-row " << (thread.has_unread_message(current_user.id) ? "highlight" : "")) data-id=thread.id
                         td
                           .media
-                            a.pull-left href="#"
-                              img.media-photo src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" /
+                            .media-left
+                              = link_to image_tag(thread.started_user.avatar_url(:thumb), :class => 'media-photo'), cars_path  , class: 'pull-left'
                             .media-body
-                              span.media-meta.pull-right = l thread.created_at, format: :short
                               h4.title = thread.subject
-                                span.pull-right.pagado = thread.started_user.equal_user?(current_user) ? current_user.full_name : thread.to_user.full_name
                               p.summary = thread.latest_message.body.split[0...10].join(' ') << "..."
+                              span.media-meta.pull-right = thread.created_at.strftime("%d-%m-%Y %H:%M:%S")
+                              span.pull-right.pagado = thread.started_user.full_name
               - if @message_threads.empty?
                 p No messages

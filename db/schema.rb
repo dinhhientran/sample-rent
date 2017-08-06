@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806111131) do
+ActiveRecord::Schema.define(version: 20170806150502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "cars", force: :cascade do |t|
     t.string   "brand"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170806111131) do
     t.string    "address"
     t.string    "phone_number"
     t.geography "coordinates",            limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.text      "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

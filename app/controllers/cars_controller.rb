@@ -3,7 +3,6 @@ class CarsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :new, :create]
 
   # GET /cars
-  # GET /cars.json
   def index
     if params[:search]
       @cars = Car.search(params[:search]).order("created_at DESC")
@@ -13,7 +12,6 @@ class CarsController < ApplicationController
   end
 
   # GET /cars/1
-  # GET /cars/1.json
   def show
     @car = Car.find(params[:id])
   end
@@ -34,7 +32,6 @@ class CarsController < ApplicationController
   end
 
   # POST /cars
-  # POST /cars.json
   def create
     @car = Car.new(car_params)
     @car.user = current_user
@@ -51,7 +48,6 @@ class CarsController < ApplicationController
   end
 
   # PATCH/PUT /cars/1
-  # PATCH/PUT /cars/1.json
   def update
     respond_to do |format|
       if @car.update(car_params)
@@ -65,7 +61,6 @@ class CarsController < ApplicationController
   end
 
   # DELETE /cars/1
-  # DELETE /cars/1.json
   def destroy
     @car.destroy
     respond_to do |format|

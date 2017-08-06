@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
+  mount_uploader :avatar, ImageUploader
+
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :city, :presence => true

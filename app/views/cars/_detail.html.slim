@@ -1,0 +1,40 @@
+.row
+  .col-md-12
+    h1 = "#{@car.brand} #{@car.model}"
+.row
+  .col-md-3
+    = image_tag @car.image_url(:thumb), class: 'thumbnail' if @car.image?
+  .col-md-9.car-detail
+    p
+      strong Brand:
+      span = @car.brand
+    p
+      strong Model:
+      span = @car.model
+    p
+      strong Seat:
+      span = @car.seat
+    p
+      strong Color:
+      span = @car.color
+    p
+      strong Cost:
+      span = @car.price
+    p
+      strong Added Date:
+      span = @car.created_at.strftime("%d-%m-%Y %H:%M:%S")
+    p
+      strong Public year:
+      span = @car.public_year
+    p
+      strong Owner:
+      span = @car.user.full_name << " (" << @car.user.email << ")"
+    p
+      strong Owner's city
+      span = @car.user.city
+    p
+      strong Owner's address
+      span = @car.user.address
+    p
+      strong Description:
+    p = @car.description

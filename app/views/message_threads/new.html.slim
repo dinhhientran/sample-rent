@@ -1,6 +1,7 @@
+= render "cars/detail"
 .row
   .col-md-12
-    h1 = 'Send message to ' << @to_user.full_name
+    h2 = 'Send message to ' << @to_user.full_name << ' to rent this car'
     = form_for @message_thread do |f|
       = f.hidden_field :to_user_id, :value => @to_user.id
       .form-group
@@ -10,4 +11,4 @@
         = f.label 'Content'
         = text_area_tag :message, nil, rows: 4, cols: 100, class: 'form-control'
       .form-group
-        = f.submit 'Send'
+        = f.submit 'Send', class: 'btn btn-primary'

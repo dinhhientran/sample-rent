@@ -1,4 +1,4 @@
-.row.current-chat-area
+.row
   .col-md-12
     h1 = @message_thread.subject
     ul.media-list
@@ -6,12 +6,12 @@
         li.media
           .media-body
             .media
-              a.pull-left href="#"
-                img.media-object.img-circle src="https://app.teamsupport.com/dc/1078/UserAvatar/1839999/48/1470773165634" /
+              = link_to image_tag(message.sender.avatar_url(:thumb), :class => 'media-photo'), cars_path, class: 'pull-left'
               .media-body = message.body
-              br/
-              small.text-muted = "#{message.sender.full_name} | #{l message.created_at, format: :short}"
-              hr/
+              br
+              br
+              small.text-muted = "#{message.sender.full_name} | #{message.created_at.strftime("%d-%m-%Y %H:%M:%S")}"
+              hr
   .col-md-12
     h1 = 'Reply '
     = form_for @message do |f|
@@ -20,4 +20,4 @@
         = f.label 'Message'
         = f.text_area :body, rows: 4, cols: 100, class: 'form-control'
       .form-group
-        = f.submit 'Send'
+        = f.submit 'Send', class: 'btn btn-primary'

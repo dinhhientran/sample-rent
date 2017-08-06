@@ -13,7 +13,7 @@
     = f.text_field :model, autofocus: true, class: 'form-control'
   .form-group
     = f.label :seat
-    = f.select(:seat, @seat.map { |value| [ value, value ] })
+    = f.select :seat, @seat.map { |value| [ value, value ] }, {}, {:class => 'form-control'}
   .form-group
     = f.label :color
     = f.text_field :color, autofocus: true, class: 'form-control'
@@ -22,12 +22,12 @@
     = f.number_field :price, autofocus: true, class: 'form-control'
   .form-group
     = f.label :public_year
-    = f.select(:public_year, @public_year.map { |value| [ value, value ] })
+    = f.select :public_year, @public_year.map { |value| [ value, value ] }, {}, {:class => 'form-control'}
   .form-group
-    = f.label :remote_image_url, "or image URL"
+    = f.label :image
     = f.file_field :image, autofocus: true, class: 'form-control'
   .form-group
     = f.label :description
     = f.text_area :description, autofocus: true, class: 'form-control'
   .form-group
-    .actions = f.submit t('.submit', default: 'Submit'), class: 'btn btn-primary'
+    .actions = f.submit 'Submit', class: 'btn btn-primary'

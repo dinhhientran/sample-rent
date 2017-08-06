@@ -22,8 +22,9 @@ class MessageThreadsController < ApplicationController
   # In case users send message to themselves or to_user does not exist,
   # redirect users to 'not found' page
   def new
-    if User.exists?(params[:to_user]) && current_user.id != params[:to_user]
+    if User.exists?(params[:to_user]) && current_user.id != params[:to_user] && Car.exists?(params[:car_id])
       @to_user = User.find(params[:to_user])
+      @car = Car.find(params[:car_id])
       @message_thread = MessageThread.new
     else
       render_not_found

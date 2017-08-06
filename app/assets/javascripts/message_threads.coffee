@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'ready page:load', ->
   $(".message-thread-row").click ->
-    window.location.href = '/message_threads/' + $(this).data('id')
+    window.location = '/message_threads/' + $(this).data('id')
     return
   return
