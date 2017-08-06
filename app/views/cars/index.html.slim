@@ -33,9 +33,10 @@ h1 Listing cars
           td = car.public_year
           td = car.price
           td = car.user.email
-          - if current_user.id == car.user.id
-            td = link_to 'Edit', edit_car_path(car)
-            td = link_to 'Destroy', car, data: { confirm: 'Are you sure?' }, method: :delete
+          - if user_signed_in?
+            - if current_user.id == car.user.id
+              td = link_to 'Edit', edit_car_path(car)
+              td = link_to 'Destroy', car, data: { confirm: 'Are you sure?' }, method: :delete
 - else
   p There are no car containing the search term(s)
 
