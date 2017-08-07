@@ -28,11 +28,13 @@ class Car < ActiveRecord::Base
 	scope :red, -> { where(color: 'red') }
 	scope :last_cars, -> { limit(4).order('created_at DESC') }
 
+	# Get all car activated
 	def self.get_cars()
 		where("activate == true")
 		order('created_at DESC')
 	end
 
+	# Search Car base on Brand, Model or Description
 	def self.search(search)
 	  where("brand LIKE ? OR model LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
 	end

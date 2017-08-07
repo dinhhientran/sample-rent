@@ -30,4 +30,7 @@
     = f.label :description
     = f.text_area :description, autofocus: true, class: 'form-control'
   .form-group
+    = f.label :activate
+    = f.check_box :activate
+  .form-group
     .actions = f.submit 'Submit', class: 'btn btn-primary'

@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+
+  # Get latest 4 cars to show on homepage
   def index
   	@cars = Car.last_cars
     @users = User.all.where("coordinates is not null")

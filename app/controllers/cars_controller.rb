@@ -3,6 +3,7 @@ class CarsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :new, :create]
 
   # GET /cars
+  # Show search result or list all cars
   def index
     if params[:search]
       @cars = Car.search(params[:search]).order("created_at DESC")
@@ -21,17 +22,18 @@ class CarsController < ApplicationController
     @car = Car.new
     @public_year = ["2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007"]
     @seat = [2,4,7,9,16,40]
-    @colors = ["green","blue","white","black","red","other"]
+    #@colors = ["green","blue","white","black","red","other"]
   end
 
   # GET /cars/1/edit
   def edit
     @public_year = ["2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007"]
     @seat = [2,4,7,9,16,40]
-    @colors = ["green","blue","white","black","red","other"]
+    #@colors = ["green","blue","white","black","red","other"]
   end
 
   # POST /cars
+  # Create new car for current user
   def create
     @car = Car.new(car_params)
     @car.user = current_user
