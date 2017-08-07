@@ -10,11 +10,11 @@
                 table.table.table-filter
                   tbody
                     - @message_threads.each do |thread|
-                      tr class=("message-thread-row " << (thread.has_unread_message(current_user.id) ? "highlight" : "")) data-id=thread.id
+                      tr.message-thread-row data-id=thread.id onclick="window.location='#{message_thread_path(thread)}'"
                         td
                           .media
                             .media-left
-                              = link_to image_tag(thread.started_user.avatar_url(:thumb), :class => 'media-photo'), cars_path  , class: 'pull-left'
+                              = link_to image_tag(thread.started_user.avatar_url(:thumb), :class => 'media-photo'), cars_path(:user_id => thread.started_user.id)  , class: 'pull-left'
                             .media-body
                               h4.title = thread.subject
                               p.summary = thread.latest_message.body.split[0...10].join(' ') << "..."

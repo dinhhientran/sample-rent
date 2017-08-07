@@ -15,6 +15,10 @@ html lang="en"
   body
     = render "layouts/menu"
     .container
+      - if !flash[:success].nil?
+        .alert.alert-success
+          strong Success! 
+          = flash[:success]
       = yield
       hr
 

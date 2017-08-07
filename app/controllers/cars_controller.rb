@@ -7,8 +7,11 @@ class CarsController < ApplicationController
   def index
     if params[:search]
       @cars = Car.search(params[:search]).order("created_at DESC")
+    elsif params[:user_id]
+      @user = User.find(params[:user_id])
+      @cars = Car.of_user(@user)
     else
-      @cars = Car.get_cars
+      @cars = Car.all.order("created_at DESC")
     end
   end
 
@@ -40,7 +43,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
+        format.html { redirect_to @car, success: 'Car was successfully created.' }
         format.json { render :show, status: :created, location: @car }
       else
         format.html { render :new }
@@ -53,7 +56,7 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
+        format.html { redirect_to @car, success: 'Car was successfully updated.' }
         format.json { render :show, status: :ok, location: @car }
       else
         format.html { render :edit }

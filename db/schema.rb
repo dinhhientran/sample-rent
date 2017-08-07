@@ -47,18 +47,18 @@ ActiveRecord::Schema.define(version: 20170806150502) do
   add_index "message_threads", ["to_user_id"], name: "index_message_threads_on_to_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "sender_id",         null: false
-    t.integer  "receiver_id",       null: false
+    t.integer  "from_user_id",                      null: false
+    t.integer  "to_user_id",                        null: false
     t.text     "body"
-    t.boolean  "is_sender_read"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.boolean  "is_sender_read",    default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "message_thread_id"
     t.boolean  "is_receiver_read"
   end
 
-  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
-  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
+  add_index "messages", ["from_user_id"], name: "index_messages_on_from_user_id", using: :btree
+  add_index "messages", ["to_user_id"], name: "index_messages_on_to_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string    "email",                                                                              default: "", null: false
@@ -88,6 +88,6 @@ ActiveRecord::Schema.define(version: 20170806150502) do
   add_foreign_key "message_threads", "messages", column: "latest_message_id"
   add_foreign_key "message_threads", "users", column: "started_user_id"
   add_foreign_key "message_threads", "users", column: "to_user_id"
-  add_foreign_key "messages", "users", column: "receiver_id"
-  add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "messages", "users", column: "from_user_id"
+  add_foreign_key "messages", "users", column: "to_user_id"
 end

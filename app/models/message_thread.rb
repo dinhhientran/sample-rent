@@ -24,8 +24,4 @@ class MessageThread < ActiveRecord::Base
   validates :started_user_id, :presence => true
 
   scope :of_user, ->(user) { where("started_user_id = ? OR to_user_id = ?", user.id, user.id).order("created_at desc") }
-
-  def has_unread_message(user_id)
-    messages.count_unread_messages(user_id) > 0
-  end
 end

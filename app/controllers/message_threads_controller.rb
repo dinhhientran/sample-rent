@@ -41,11 +41,13 @@ class MessageThreadsController < ApplicationController
       message.message_thread = @message_thread
       message.sender = current_user
       message.is_sender_read = true
+      message.is_receiver_read = false
       message.receiver = @message_thread.to_user
       message.body = params[:message]
 
       if message.save
         @message_thread.update(latest_message_id: message.id)
+        flash[:success] = "Message has been sent!"
         redirect_to @message_thread
       end
     end

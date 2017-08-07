@@ -20,6 +20,8 @@
 #  city                   :string
 #  address                :string
 #  phone_number           :string
+#  coordinates            :geography({:srid point, 4326
+#  avatar                 :text
 #
 
 require 'test_helper'

@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
 
+  # Add new message into message thread
   def create
     @message = Message.new(message_param)
     @message_thread = MessageThread.find(@message.message_thread_id)
@@ -8,9 +9,12 @@ class MessagesController < ApplicationController
     @message.receiver = current_user.equal_user?(@message_thread.started_user) ? @message_thread.to_user : @message_thread.started_user
     @message.sender = current_user
     @message.is_sender_read = true
-    @message.save
+    @message.is_receiver_read = false
 
-    redirect_to @message_thread
+    if @message.save
+      flash[:success] = "Message has been sent!"
+      redirect_to @message_thread
+    end
   end
 
   private
