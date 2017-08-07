@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :city, :address, :avatar])
     end
 
+    # Get latitude & longitude from user city & address, then update user coordinate value
     def update_coordinates
       user = current_user
       geo_result = Geocoder.search(user.address + ', ' + user.city)

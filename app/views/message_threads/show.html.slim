@@ -1,12 +1,15 @@
 .row
   .col-md-12
     h1 = @message_thread.subject
+    p
+      | Exchange messages with
+      strong = " " << (@message_thread.started_user.equal_user?(current_user) ? @message_thread.to_user.full_name : @message_thread.started_user.full_name)
     ul.media-list
       - @message_thread.messages.each do |message|
         li.media
           .media-body
             .media
-              = link_to image_tag(message.sender.avatar_url(:thumb), :class => 'media-photo'), cars_path, class: 'pull-left'
+              = link_to image_tag(message.sender.avatar_url(:thumb), :class => 'media-photo'), cars_path(:user_id => message.sender.id), class: 'pull-left'
               .media-body = message.body
               br
               br

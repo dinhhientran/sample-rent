@@ -10,7 +10,7 @@
                 table.table.table-filter
                   tbody
                     - @message_threads.each do |thread|
-                      tr class=("message-thread-row " << (thread.has_unread_message(current_user.id) ? "highlight" : "")) data-id=thread.id
+                      tr.message-thread-row data-id=thread.id
                         td
                           .media
                             .media-left

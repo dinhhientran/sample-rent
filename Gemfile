@@ -34,10 +34,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "devise"
 
-gem "omniauth-facebook"
-
-gem "simple_form"
-
 gem "slim-rails"
 
 gem "activerecord-postgis-adapter"
@@ -62,6 +58,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'annotate'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -76,7 +74,9 @@ gem 'rails_12factor', group: :production
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
+  gem "faker"
   gem "capybara"
   gem "guard-rspec"
+  gem "launchy"
+  gem "shoulda-matchers", "~> 3.1"
 end

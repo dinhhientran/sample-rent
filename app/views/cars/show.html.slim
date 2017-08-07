@@ -4,7 +4,7 @@ p#notice = notice
 
 .row.pull-right
   - if current_user.nil? || !current_user.equal_user?(@car.user)
-    = link_to "Send message to " << @car.user.full_name << " to rent", new_message_thread_path(:to_user => @car.user.id, :car_id => @car.id), class: 'btn btn-primary'
+    = link_to "Send a message to " << @car.user.full_name << " to rent", new_message_thread_path(:to_user => @car.user.id, :car_id => @car.id), class: 'btn btn-primary'
 .row
   - if current_user.id == @car.user.id
     .col-md-12

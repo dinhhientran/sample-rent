@@ -20,6 +20,8 @@
 #  city                   :string
 #  address                :string
 #  phone_number           :string
+#  coordinates            :geography({:srid point, 4326
+#  avatar                 :text
 #
 
 class User < ActiveRecord::Base
@@ -27,8 +29,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  has_many :messages
 
   mount_uploader :avatar, ImageUploader
 
