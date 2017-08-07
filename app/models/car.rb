@@ -27,12 +27,9 @@ class Car < ActiveRecord::Base
 
 	scope :latest_cars, -> { limit(4).order('created_at DESC') }
 	scope :of_user, ->(user) { where('user_id = ?', user.id).order('created_at DESC') }
-
+	
 	# Get all car activated
-	def self.get_cars()
-		where("activate == true")
-		order('created_at DESC')
-	end
+	scope :get_cars, -> { order('created_at DESC') }
 
 	# Search Car base on Brand, Model or Description
 	def self.search(search)
