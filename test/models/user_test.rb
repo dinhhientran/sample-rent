@@ -21,7 +21,10 @@
 #  address                :string
 #  phone_number           :string
 #  coordinates            :geography({:srid point, 4326
-#  avatar                 :text
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 require 'test_helper'

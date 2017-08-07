@@ -2,25 +2,29 @@
 #
 # Table name: cars
 #
-#  id          :integer          not null, primary key
-#  brand       :string
-#  model       :string
-#  seat        :integer
-#  color       :string
-#  price       :integer
-#  public_year :integer
-#  description :text
-#  user_id     :integer
-#  activate    :boolean
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  image       :string
+#  id                 :integer          not null, primary key
+#  brand              :string
+#  model              :string
+#  seat               :integer
+#  color              :string
+#  price              :integer
+#  public_year        :integer
+#  description        :text
+#  user_id            :integer
+#  activate           :boolean
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class Car < ActiveRecord::Base
 	belongs_to :user
 
-	mount_uploader :image, ImageUploader
+	has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://www.ecijagamingcommunity.com/wp-content/themes/cwp-youit/images/no-image-default.png"
+	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
 	validates :brand, presence: true, length: { minimum: 3 }
 	validates :model, presence: true, length: { minimum: 2 }

@@ -10,7 +10,7 @@
         li.media
           .media-body
             .media
-              = link_to image_tag(message.sender.avatar_url(:thumb), :class => 'media-photo'), cars_path(:user_id => message.sender.id), class: 'pull-left'
+              = link_to image_tag(message.sender.avatar.url(:thumb), :class => 'media-photo'), cars_path(:user_id => message.sender.id), class: 'pull-left'
               .media-body = message.body
               br
               br

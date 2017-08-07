@@ -44,7 +44,7 @@ hr
     .col-md-3.col-sm-6.hero-feature
       .thumbnail
         = link_to car do
-          = image_tag car.image_url(:thumb), class: 'thumbnail'
+          = image_tag car.image.url(:medium), class: 'thumbnail'
         .caption
           h3 ="#{car.brand} #{car.model}"
           p = car.description.split[0...10].join(' ') << "..."

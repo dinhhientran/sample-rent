@@ -21,7 +21,10 @@
 #  address                :string
 #  phone_number           :string
 #  coordinates            :geography({:srid point, 4326
-#  avatar                 :text
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
@@ -30,7 +33,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, ImageUploader
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://www.ecijagamingcommunity.com/wp-content/themes/cwp-youit/images/no-image-default.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true

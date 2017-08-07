@@ -2,9 +2,9 @@
   .col-md-12
     h1 = "#{@car.brand} #{@car.model}"
 .row
-  .col-md-3
-    = image_tag @car.image_url(:thumb), class: 'thumbnail' if @car.image?
-  .col-md-9.car-detail
+  .col-md-4
+    = image_tag @car.image.url(:medium), class: 'thumbnail' if @car.image?
+  .col-md-8.car-detail
     p
       strong Brand:
       span = @car.brand
