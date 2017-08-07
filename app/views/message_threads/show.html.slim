@@ -3,7 +3,8 @@
     h1 = @message_thread.subject
     p
       | Exchange messages with
-      strong = " " << (@message_thread.started_user.equal_user?(current_user) ? @message_thread.to_user.full_name : @message_thread.started_user.full_name)
+      - user = @message_thread.started_user.equal_user?(current_user) ? @message_thread.to_user : @message_thread.started_user
+      = link_to " " + user.full_name, cars_path(:user_id => user.id)
     ul.media-list
       - @message_thread.messages.each do |message|
         li.media

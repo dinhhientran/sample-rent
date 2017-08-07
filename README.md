@@ -10,7 +10,7 @@ This is a sample site for car rental. It allows users to sign up and post their 
 * Rails 4.2.8
 * Database: Postgresql 9.6 using postgis adapter
 
-We also apply gems such as slim for template engine, devise for user registration/authentication, annotate, boostrap etc 
+We also apply gems such as slim for template engine, devise for user registration/authentication, annotate, boostrap, rspec for testing etc 
 
 # Install
 
@@ -26,4 +26,4 @@ We also apply gems such as slim for template engine, devise for user registratio
 
 # Demo
 
-we deployed it on Heroku. See it here https://sample-rent.herokuapp.com/
+e deployed it on Heroku. See it here https://sample-rent.herokuapp.com/
