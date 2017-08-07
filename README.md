@@ -26,4 +26,4 @@ We also apply gems such as slim for template engine, devise for user registratio
 
 # Demo
 
-e deployed it on Heroku. See it here https://sample-rent.herokuapp.com/
+We deployed it on Heroku. See it here https://sample-rent.herokuapp.com/

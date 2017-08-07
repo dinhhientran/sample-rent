@@ -10,6 +10,7 @@ class HomeController < ApplicationController
       marker.title user.full_name
       marker.json(:user_id => user.id)
       marker.json(:address => user.full_address)
+      marker.json(:full_name => user.full_name)
     end
   end
 end
